@@ -162,6 +162,15 @@ Query Parameters:
 - `permissions` (string[], required): An array of permissions. Valid values: `["deposit", "transfer", "read"]`.
 - `expiry` (string, required): The duration until the API key expires. Valid values: `"1H"`, `"1D"`, `"1M"`, `"1Y"`.
 
+**Response**:
+
+```json
+{
+  "api_key": "sk_live_api_key",
+  "expires_at": "2024-01-13T12:00:00.000Z"
+}
+```
+
 **Errors**:
 
 - `400 Bad Request`: If `name`, `permissions`, or `expiry` are missing or invalid (e.g., unknown permission, invalid expiry format, or maximum active keys reached).
