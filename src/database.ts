@@ -3,6 +3,12 @@ import { config } from './config';
 
 export const pool = new Pool({
   connectionString: config.databaseUrl,
+  ssl:
+    config.nodeEnv === 'production'
+      ? {
+          rejectUnauthorized: false, // Required for Render, Railway, Heroku, etc.
+        }
+      : false,
 });
 
 export async function initDatabase() {

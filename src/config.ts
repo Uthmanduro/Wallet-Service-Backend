@@ -19,4 +19,5 @@ export const config = {
   dbHost: process.env.DB_HOST,
   dbPort: process.env.DB_PORT,
   dbName: process.env.DB_NAME,
+  nodeEnv: process.env.NODE_ENV || 'development',
 };
