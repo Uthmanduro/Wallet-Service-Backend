@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 export const config = {
   port: process.env.PORT || 3000,
@@ -12,8 +14,7 @@ export const config = {
     'http://localhost:3000/auth/google/callback',
   paystackSecretKey: process.env.PAYSTACK_SECRET_KEY!,
   paystackPublicKey: process.env.PAYSTACK_PUBLIC_KEY!,
-  databaseUrl:
-    process.env.DATABASE_URL || 'postgres://localhost:5432/wallet_service',
+  databaseUrl: process.env.DATABASE_URL,
   dbUser: process.env.DB_USER,
   dbPassword: process.env.DB_PASSWORD,
   dbHost: process.env.DB_HOST,
