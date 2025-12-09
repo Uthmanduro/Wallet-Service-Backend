@@ -203,7 +203,7 @@ walletRouter.get(
     }
 
     res.json({
-      balance: parseFloat(req.wallet.balance),
+      balance: Number(req.wallet.balance),
     });
   }
 );
@@ -226,7 +226,7 @@ walletRouter.post(
     }
 
     // Check balance
-    if (parseFloat(req.wallet.balance) < amount) {
+    if (Number(req.wallet.balance) < amount) {
       return res.status(400).json({ error: 'Insufficient balance' });
     }
 

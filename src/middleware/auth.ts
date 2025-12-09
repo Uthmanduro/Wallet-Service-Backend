@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '../types';
+import { AuthRequest, User } from '../types';
 import { verifyJWT } from '../utils/jwt';
 import { pool } from '../database';
 import { hashApiKey } from '../utils/crypto';
@@ -32,7 +32,7 @@ export async function authenticate(
       // Get wallet
       const walletResult = await pool.query(
         'SELECT * FROM wallets WHERE user_id = $1',
-        [req.user.id]
+        [(req.user as User).id]
       );
 
       if (walletResult.rows.length > 0) {
